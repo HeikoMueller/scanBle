@@ -21,8 +21,10 @@ public class SwiftScanBlePlugin: NSObject, FlutterPlugin, FlutterStreamHandler, 
     }
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch (call.method) {
-            case "startScaning":
+            case "startScanning":
                 startScan(call, result)
+            case "stopScanning":
+                stopScan(call, result)
             default:
                 result(FlutterMethodNotImplemented)
       }
@@ -37,6 +39,11 @@ public class SwiftScanBlePlugin: NSObject, FlutterPlugin, FlutterStreamHandler, 
     public func onCancel(withArguments arguments: Any?) -> FlutterError? {
         eventSink = nil
         return nil
+    }
+    func stopScan(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+        print("XCODE : STOP SCAN CALLED");
+        centralManager?.stopScan()
+        result(nil)
     }
 
     func startScan(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {

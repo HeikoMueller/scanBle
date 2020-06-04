@@ -11,6 +11,9 @@ class ScanBle {
   static Future<void> startScanning() async {
     await _methodChannel.invokeMethod('startScanning');
   }
+  static Future<void> stopScanning() async {
+    await _methodChannel.invokeMethod('stopScanning');
+  }
 
   static Stream<dynamic> get detected {
     return _eventChannel.receiveBroadcastStream().cast<dynamic>();
