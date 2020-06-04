@@ -15,7 +15,7 @@ class ScanBle {
     await _methodChannel.invokeMethod('stopScanning');
   }
 
-  static Stream<dynamic> get detected {
+  static Stream<dynamic> getDetected() {
     return _eventChannel.receiveBroadcastStream().cast<dynamic>();
   }
 }
