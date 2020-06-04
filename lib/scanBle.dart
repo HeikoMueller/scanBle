@@ -8,14 +8,14 @@ class ScanBle {
   static const EventChannel _eventChannel =
       const EventChannel('roktok.immu.dev/bluetoothScannerResponse');
 
-  static Future<void> startScanning() async {
+  Future<void> startScanning() async {
     await _methodChannel.invokeMethod('startScanning');
   }
-  static Future<void> stopScanning() async {
+  Future<void> stopScanning() async {
     await _methodChannel.invokeMethod('stopScanning');
   }
 
-  static Stream<dynamic> getDetected() {
+  Stream<dynamic> getDetected() {
     return _eventChannel.receiveBroadcastStream().cast<dynamic>();
   }
 }
