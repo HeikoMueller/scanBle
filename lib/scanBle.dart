@@ -1,6 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 
 class ScanBle {
   static const MethodChannel _methodChannel =
@@ -8,8 +8,8 @@ class ScanBle {
   static const EventChannel _eventChannel =
       const EventChannel('roktok.immu.dev/bluetoothScannerResponse');
 
-  Future<void> startScanning() async {
-    await _methodChannel.invokeMethod('startScanning');
+  Future<void> startScanning({@required List<String> uuids}) async {
+    await _methodChannel.invokeMethod('startScanning', uuids);
   }
   Future<void> stopScanning() async {
     await _methodChannel.invokeMethod('stopScanning');
